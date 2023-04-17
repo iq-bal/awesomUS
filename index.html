@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A welfare eco-system for the students of Moydanhatta union</title>
+    <style>
+        .form-container {
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            /* height: 100vh; */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            width: 30%;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        body {
+            font-family: Helvetica;
+            -webkit-font-smoothing: antialiased;
+            background: rgba(71, 147, 227, 1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            padding: 30px 0;
+        }
+
+        /* Table Styles */
+
+        .table-wrapper {
+            margin: 10px 70px 70px;
+            box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .fl-table {
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: normal;
+            border: none;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 100%;
+            white-space: nowrap;
+            background-color: white;
+        }
+
+        .fl-table td,
+        .fl-table th {
+            text-align: center;
+            padding: 8px;
+        }
+
+        .fl-table td {
+            border-right: 1px solid #f8f8f8;
+            font-size: 12px;
+        }
+
+        .fl-table thead th {
+            color: #ffffff;
+            background: #4FC3A1;
+        }
+
+
+        .fl-table thead th:nth-child(odd) {
+            color: #ffffff;
+            background: #324960;
+        }
+
+        .fl-table tr:nth-child(even) {
+            background: #F8F8F8;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 767px) {
+            .fl-table {
+                display: block;
+                width: 100%;
+            }
+
+            .table-wrapper:before {
+                content: "Scroll horizontally >";
+                display: block;
+                text-align: right;
+                font-size: 11px;
+                color: white;
+                padding: 0 0 10px;
+            }
+
+            .fl-table thead,
+            .fl-table tbody,
+            .fl-table thead th {
+                display: block;
+            }
+
+            .fl-table thead th:last-child {
+                border-bottom: none;
+            }
+
+            .fl-table thead {
+                float: left;
+            }
+
+            .fl-table tbody {
+                width: auto;
+                position: relative;
+                overflow-x: auto;
+            }
+
+            .fl-table td,
+            .fl-table th {
+                padding: 20px .625em .625em .625em;
+                height: 60px;
+                vertical-align: middle;
+                box-sizing: border-box;
+                overflow-x: hidden;
+                overflow-y: auto;
+                width: 120px;
+                font-size: 13px;
+                text-overflow: ellipsis;
+            }
+
+            .fl-table thead th {
+                text-align: left;
+                border-bottom: 1px solid #f7f7f9;
+            }
+
+            .fl-table tbody tr {
+                display: table-cell;
+            }
+
+            .fl-table tbody tr:nth-child(odd) {
+                background: none;
+            }
+
+            .fl-table tr:nth-child(even) {
+                background: transparent;
+            }
+
+            .fl-table tr td:nth-child(odd) {
+                background: #F8F8F8;
+                border-right: 1px solid #E6E4E4;
+            }
+
+            .fl-table tr td:nth-child(even) {
+                border-right: 1px solid #E6E4E4;
+            }
+
+            .fl-table tbody td {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body onload="loadTable()">
+    <div class="form-container">
+        <form id="myForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="batch">Batch:</label>
+            <input type="text" id="batch" name="batch" required>
+
+            <label for="university">University:</label>
+            <input type="text" id="university" name="university" required>
+
+            <label for="paymentStatus">Payment Status:</label>
+            <select id="paymentStatus" name="paymentStatus" required>
+                <option value="">--Select--</option>
+                <option value="Paid">Paid</option>
+                <option value="Pending">Pending</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+
+    <h2>Registered Member For Iftar Dinner 2023, organized by - awesomUs</h2>
+    <div class="table-wrapper">
+        <table class="fl-table" id="myTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Batch</th>
+                    <th>University</th>
+                    <th>Payment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            <tbody>
+        </table>
+    </div>
+    </table>
+    <script>
+        var tableData = [];
+
+        function addRow(name, batch, university, paymentStatus) {
+            var table = document.getElementById("myTable");
+            var row = table.insertRow();
+            var nameCell = row.insertCell(0);
+            var batchCell = row.insertCell(1);
+            var universityCell = row.insertCell(2);
+            var paymentStatusCell = row.insertCell(3);
+
+            nameCell.innerHTML = name;
+            batchCell.innerHTML = batch;
+            universityCell.innerHTML = university;
+            paymentStatusCell.innerHTML = paymentStatus;
+
+            tableData.push({
+                name: name,
+                batch: batch,
+                university: university,
+                paymentStatus: paymentStatus
+            });
+        }
+
+        function saveTable() {
+            var cookieData = JSON.stringify(tableData);
+            document.cookie = "myTable=" + cookieData + ";expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        }
+
+        function loadTable() {
+            var table = document.getElementById("myTable");
+            var cookieData = document.cookie.replace(/(?:(?:^|.*;\s*)myTable\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            if (cookieData) {
+                tableData = JSON.parse(cookieData);
+                tableData.forEach(function (row) {
+                    addRow(row.name, row.age, row.gender);
+                });
+            }
+        }
+        addRow("Iqbal Mahamud", "2k18", "KUET", "PAID");
+        addRow("Fazle Rabbi", "2k18", "PSTU", "PAID");
+        addRow("Ashikur Rahaman", "2k18", "RU", "PAID");
+        addRow("Rafiul Alam", "2k18", "Dental", "PAID");
+        addRow("Shahid Rahaman", "2k17", "DU", "PAID");
+        addRow("Rubayet Haydar", "2k17", "RU", "PAID");
+        addRow("Omar Faruk", "2k17", "RUET", "PAID");
+        addRow("Robiul Islam", "2k17", "JU", "PAID");
+        addRow("Shahoria Kabir", "2k16", "BAU", "PAID");
+        addRow("Ishita Orthi", "2k16", "SUST", "PAID");
+        addRow("Rumana Nur", "2k16", "JnU", "PAID");
+        saveTable();
+    </script>
+</body>
+
+</html>
